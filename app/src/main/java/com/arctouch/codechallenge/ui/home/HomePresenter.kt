@@ -1,6 +1,5 @@
 package com.arctouch.codechallenge.ui.home
 
-import android.annotation.SuppressLint
 import com.arctouch.codechallenge.api.TmdbApi
 import com.arctouch.codechallenge.data.Cache
 import com.arctouch.codechallenge.ui.home.HomeContract.HomeView

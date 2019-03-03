@@ -2,4 +2,7 @@
     <string name="app_name">Code Challenge</string>
     <string name="movie_and_genres">%s - %s</string>
     <string name="no_overview_message">No overview info available</string>
+    <string name="no_new_data">No new movies available</string>
+    <string name="general_connection_message">Error loading content, please try again later</string>
+    <string name="retry">Retry</string>
 </resources>

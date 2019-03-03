@@ -1,11 +1,12 @@
 package com.arctouch.codechallenge.ui.details
 
 import com.arctouch.codechallenge.model.Movie
+import com.arctouch.codechallenge.model.MovieDetails
 
 interface MovieDetailsContract {
 
     interface MovieView {
-        fun setMovieDetails(movie: Movie)
+        fun setMovieDetails(movieDetails: MovieDetails)
     }
 
     interface MovieDetailsPresenter {

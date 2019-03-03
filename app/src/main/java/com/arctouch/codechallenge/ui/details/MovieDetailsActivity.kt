@@ -8,7 +8,9 @@ import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.R.string
 import com.arctouch.codechallenge.di.ServiceLocator
 import com.arctouch.codechallenge.model.Movie
+import com.arctouch.codechallenge.model.MovieDetails
 import com.arctouch.codechallenge.util.MovieImageUrlBuilder
+import com.arctouch.codechallenge.util.loadUrl
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_movie_details.iv_movie_banner
@@ -32,15 +34,16 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsContract.MovieView
         movieDetailsPresenter.getMovieDetailsById(intent.getIntExtra(EXTRA_MOVIE_ID, 0))
     }
 
-    override fun setMovieDetails(movie: Movie) {
-        tv_movie_title.text = movie.title
-        tv_movie_summary.text = if (movie.overview.isNullOrEmpty()) getString(string.no_overview_message) else movie.overview
-        tv_movie_genres.text = movie.genres?.joinToString(separator = ", ") { it.name }
+    override fun setMovieDetails(movieDetails: MovieDetails) {
+        tv_movie_title.text = movieDetails.title
+        tv_movie_summary.text = if (movieDetails.overview.isNullOrEmpty()) getString(
+                string.no_overview_message) else movieDetails.overview
+        tv_movie_summary.text = movieDetails.overview
+        tv_movie_genres.text = movieDetails.genres
 
-        Glide.with(this)
-                .load(movie.backdropPath?.let { MovieImageUrlBuilder.buildBackdropUrl(it) })
-                .apply(RequestOptions().placeholder(R.drawable.ic_image_placeholder))
-                .into(iv_movie_banner)
+        movieDetails.backdropURL?.let {
+            iv_movie_banner.loadUrl(it)
+        }
     }
 
     override fun onDestroy() {

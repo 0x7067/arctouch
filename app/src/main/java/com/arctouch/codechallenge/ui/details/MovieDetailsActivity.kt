@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.R.string
 import com.arctouch.codechallenge.di.ServiceLocator
@@ -36,9 +37,8 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsContract.MovieView
 
     override fun setMovieDetails(movieDetails: MovieDetails) {
         tv_movie_title.text = movieDetails.title
-        tv_movie_summary.text = if (movieDetails.overview.isNullOrEmpty()) getString(
+        tv_movie_summary.text = if (movieDetails.overview.isNullOrBlank()) getString(
                 string.no_overview_message) else movieDetails.overview
-        tv_movie_summary.text = movieDetails.overview
         tv_movie_genres.text = movieDetails.genres
 
         movieDetails.backdropURL?.let {

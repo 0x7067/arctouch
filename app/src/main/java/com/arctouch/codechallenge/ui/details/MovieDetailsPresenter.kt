@@ -3,7 +3,6 @@ package com.arctouch.codechallenge.ui.details
 import com.arctouch.codechallenge.api.TmdbApi
 import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.model.MovieDetails
-import com.arctouch.codechallenge.ui.details.MovieDetailsContract.MovieView
 import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -28,7 +27,8 @@ class MovieDetailsPresenter(private val tmdbApi: TmdbApi) : MovieDetailsContract
                         val movieDetails = MovieDetails(movie.title,
                                 movie.overview,
                                 movie.genres?.joinToString(separator = ", ") { it.name },
-                                movie.backdropPath?.let { MovieImageUrlBuilder.buildBackdropUrl(it) })
+                                movie.backdropPath?.let { MovieImageUrlBuilder.buildBackdropUrl(it) },
+                                movie.releaseDate)
                         movieView?.setMovieDetails(movieDetails)
                     }
 

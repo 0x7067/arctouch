@@ -10,6 +10,7 @@ import com.arctouch.codechallenge.di.ServiceLocator
 import com.arctouch.codechallenge.model.MovieDetails
 import com.arctouch.codechallenge.util.loadUrl
 import kotlinx.android.synthetic.main.activity_movie_details.iv_movie_banner
+import kotlinx.android.synthetic.main.activity_movie_details.tv_movie_date
 import kotlinx.android.synthetic.main.activity_movie_details.tv_movie_genres
 import kotlinx.android.synthetic.main.activity_movie_details.tv_movie_summary
 import kotlinx.android.synthetic.main.activity_movie_details.tv_movie_title
@@ -35,6 +36,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsContract.MovieView
         tv_movie_summary.text = if (movieDetails.overview.isNullOrBlank()) getString(
                 string.no_overview_message) else movieDetails.overview
         tv_movie_genres.text = movieDetails.genres
+        tv_movie_date.text = movieDetails.releaseDate
 
         movieDetails.backdropURL?.let {
             iv_movie_banner.loadUrl(it)

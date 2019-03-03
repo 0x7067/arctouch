@@ -28,5 +28,6 @@ data class MovieDetails(
         val title: String,
         val overview: String?,
         val genres: String?,
-        val backdropURL: String?
+        val backdropURL: String?,
+        val releaseDate: String?
 )

@@ -1,30 +1,33 @@
-package com.arctouch.codechallenge.home
+package com.arctouch.codechallenge.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.api.TmdbApi
-import com.arctouch.codechallenge.base.BaseActivity
 import com.arctouch.codechallenge.data.Cache
+import com.arctouch.codechallenge.di.ServiceLocator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.home_activity.progressBar
 import kotlinx.android.synthetic.main.home_activity.recyclerView
 
-class HomeActivity : BaseActivity() {
+class HomeActivity : AppCompatActivity() {
+
+    private val tmdbApi = ServiceLocator.tmdbApi
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
-        api.genres(TmdbApi.API_KEY, TmdbApi.DEFAULT_LANGUAGE)
+        tmdbApi.genres(TmdbApi.API_KEY, TmdbApi.DEFAULT_LANGUAGE)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Cache.cacheGenres(it.genres)
-                    api.upcomingMovies(TmdbApi.API_KEY, TmdbApi.DEFAULT_LANGUAGE, 1, TmdbApi.DEFAULT_REGION)
+                    tmdbApi.upcomingMovies(TmdbApi.API_KEY, TmdbApi.DEFAULT_LANGUAGE, 1, TmdbApi.DEFAULT_REGION)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe { it1 ->

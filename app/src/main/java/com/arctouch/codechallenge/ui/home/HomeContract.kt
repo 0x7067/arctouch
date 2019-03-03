@@ -12,7 +12,7 @@ interface HomeContract {
 
     interface HomePresenter {
         var homeView: HomeView?
-        fun dettachView()
+        fun detachView()
         fun getMovieListWithGenres()
     }
 }

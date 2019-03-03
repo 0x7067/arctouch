@@ -34,7 +34,7 @@ class HomePresenter(private val api: TmdbApi) : HomeContract.HomePresenter {
         compositeDisposable.add(disposable)
     }
 
-    override fun dettachView() {
+    override fun detachView() {
         homeView = null
         compositeDisposable.dispose()
     }

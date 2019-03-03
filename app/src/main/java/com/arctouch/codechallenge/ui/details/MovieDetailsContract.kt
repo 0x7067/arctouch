@@ -13,6 +13,6 @@ interface MovieDetailsContract {
         var movieView: MovieView?
         fun attachView(movieView: MovieView)
         fun getMovieDetailsById(id: Int)
-        fun dettachView()
+        fun detachView()
     }
 }

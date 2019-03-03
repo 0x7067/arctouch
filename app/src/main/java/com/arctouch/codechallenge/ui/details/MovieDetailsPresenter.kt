@@ -39,7 +39,7 @@ class MovieDetailsPresenter(private val tmdbApi: TmdbApi) : MovieDetailsContract
         compositeDisposable.add(disposable)
     }
 
-    override fun dettachView() {
+    override fun detachView() {
         this.movieView = null
         compositeDisposable.dispose()
     }

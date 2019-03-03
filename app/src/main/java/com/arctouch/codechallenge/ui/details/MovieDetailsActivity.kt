@@ -4,16 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.R.string
 import com.arctouch.codechallenge.di.ServiceLocator
-import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.model.MovieDetails
-import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import com.arctouch.codechallenge.util.loadUrl
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_movie_details.iv_movie_banner
 import kotlinx.android.synthetic.main.activity_movie_details.tv_movie_genres
 import kotlinx.android.synthetic.main.activity_movie_details.tv_movie_summary
@@ -48,7 +43,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsContract.MovieView
 
     override fun onDestroy() {
         super.onDestroy()
-        movieDetailsPresenter.dettachView()
+        movieDetailsPresenter.detachView()
     }
 
     companion object {

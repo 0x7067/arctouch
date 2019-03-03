@@ -23,3 +23,10 @@ data class Movie(
     @Json(name = "backdrop_path") val backdropPath: String?,
     @Json(name = "release_date") val releaseDate: String?
 )
+
+data class MovieDetails(
+        val title: String,
+        val overview: String?,
+        val genres: String?,
+        val backdropURL: String?
+)
